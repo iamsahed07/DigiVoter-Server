@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { validate } from "#/middleware/validator";
+import { userMustAuth } from "#/middleware/auth";
+import { giveVote, isVoted, sendMailVote } from "#/controllars/vote";
+import { sendOTPForVoteMail } from "#/utils/mail";
+const router = Router();
+router.post("/give-vote", userMustAuth, giveVote);
+router.post("/sendOtpForVote", userMustAuth, sendMailVote);
+router.post("/isVoted", userMustAuth, isVoted);
+export default router;
